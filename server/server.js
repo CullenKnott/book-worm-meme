@@ -8,6 +8,7 @@ const { typeDefs, resolvers } = require("./schemas");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+// create instance of apollo server with gql schema
 const startApolloServer = async () => {
   await server.start();
   server.applyMiddleware({ app });
